@@ -1,5 +1,5 @@
 import express from "express";
-import Product from "../models/product.model.js";
+import Product from "../models/team.model.js";
 import mongoose from 'mongoose';
 
 export const getProducts = async (req, res) => {

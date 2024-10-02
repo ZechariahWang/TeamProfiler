@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, SimpleGrid, Container, Heading, Input, useColorModeValue, useToast, VStack, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useProductStore } from "../Store/product";
+import { useProductStore } from "../Profiler/team";
 import ProductCard from "../Components/ProductCard";
 
 const HomePage = () => {

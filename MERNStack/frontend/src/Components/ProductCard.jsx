@@ -20,7 +20,7 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
-import { useProductStore } from "../Store/product";
+import { useProductStore } from "../Profiler/team";
 import { useState, useEffect } from "react";
 
 

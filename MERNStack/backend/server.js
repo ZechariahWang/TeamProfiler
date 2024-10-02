@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
-import productRoutes from "./routes/product.routes.js";
+import productRoutes from "./routes/team.routes.js";
 import cors from 'cors'; // Use import for cors since you're using ES modules
 import path from "path";
 
