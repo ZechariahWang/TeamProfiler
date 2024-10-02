@@ -20,7 +20,7 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
-import { useProductStore } from "../Profiler/team";
+import { useTeamStore } from "../Profiler/team";
 import { useState, useEffect } from "react";
 
 
@@ -298,7 +298,7 @@ function getTeamAwards(teamId) {
     });
 }
 
-const ProductCard = ({ product }) => {
+const TeamCard = ({ Team }) => {
   const [loading, setLoading] = useState(true);
   const [team_identification, setTeamIdentification] = useState(null);
   const [teamAwards, setTeamAwards] = useState(null);
@@ -312,13 +312,13 @@ const ProductCard = ({ product }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const teamID = await getTeamId(updatedProduct.name);
+        const teamID = await getTeamId(updatedTeam.name);
         setTeamIdentification(teamID);
 
         const awards = await getTeamAwards(teamID);
         setTeamAwards(awards);
 
-        const organization = await getTeamOrganization(updatedProduct.name);
+        const organization = await getTeamOrganization(updatedTeam.name);
         setTeamOrganization(organization);
 
         const driverSkillsScore = await getDriverSkillsScore(teamID);
@@ -339,17 +339,17 @@ const ProductCard = ({ product }) => {
     fetchData();
   }, [teamNum]);
 
-  const [updatedProduct, setUpdatedProduct] = useState(product);
+  const [updatedTeam, setUpdatedTeam] = useState(Team);
 
   const textColor = useColorModeValue("gray.600", "gray.200");
   const bg = useColorModeValue("white", "grey.200");
 
-  const { deleteProduct, updateProduct } = useProductStore();
+  const { deleteTeam, updateTeam } = useTeamStore();
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleDeleteProduct = async (pid) => {
-    const { success, message } = await deleteProduct(pid);
+  const handleDeleteTeam = async (pid) => {
+    const { success, message } = await deleteTeam(pid);
     if (!success) {
       toast({
         title: "Error",
@@ -369,8 +369,8 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  const handleUpdateProduct = async (pid, updatedProduct) => {
-    const { success, message } = await updateProduct(pid, updatedProduct);
+  const handleUpdateTeam = async (pid, updatedTeam) => {
+    const { success, message } = await updateTeam(pid, updatedTeam);
     onClose();
     if (!success) {
       toast({
@@ -402,18 +402,18 @@ const ProductCard = ({ product }) => {
     >
       <Box p={4}>
         <Heading as='h3' size='md' mb={2}>
-          {product.name}
+          {Team.name}
         </Heading>
 
         <HStack spacing={2}>
           <IconButton
             icon={<EditIcon />}
-            onClick={onOpen} // Open the modal
+            onClick={onOpen} 
             colorScheme='blue'
           />
           <IconButton
             icon={<DeleteIcon />}
-            onClick={() => handleDeleteProduct(product._id)}
+            onClick={() => handleDeleteTeam(Team._id)}
             colorScheme='red'
           />
         </HStack>
@@ -421,7 +421,7 @@ const ProductCard = ({ product }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader bgGradient={"linear(to-r, green.400, blue.500)"} bgClip={"text"} fontWeight={"bold"}>Team Number: {updatedProduct.name}</ModalHeader>
+          <ModalHeader bgGradient={"linear(to-r, green.400, blue.500)"} bgClip={"text"} fontWeight={"bold"}>Team Number: {updatedTeam.name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <VStack spacing={0.1}>
@@ -455,4 +455,4 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default TeamCard;

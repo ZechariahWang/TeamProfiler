@@ -19,7 +19,6 @@ const Navbar = () => {
                     sm: "row"
                 }}
             >
-
                 <Text
                     fontSize={{ base: "22px", sm: "28px" }}
                     fontWeight={"bold"}

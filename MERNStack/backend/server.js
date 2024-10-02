@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
-import productRoutes from "./routes/team.routes.js";
+import teamRoutes from "./routes/team.routes.js";
 import cors from 'cors'; // Use import for cors since you're using ES modules
 import path from "path";
 
@@ -17,14 +17,13 @@ connectDB();
 
 // CORS middleware
 app.use(cors({
-  origin: 'http://localhost:5173',  // Allow requests from your frontend URL
+  origin: 'http://localhost:5173', 
 }));
 
-// Middleware to accept JSON data in request body
 app.use(express.json());
 
 // Routes
-app.use("/api/products", productRoutes);
+app.use("/api/teams", teamRoutes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));

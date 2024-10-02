@@ -1,15 +1,15 @@
 import express from "express";
-import Product from "../models/team.model.js";
+import Team from "../models/team.model.js";
 import mongoose from 'mongoose';
-import { createProduct, getProducts } from "../controller/team.controller.js";
-import { updateProduct } from "../controller/team.controller.js";
-import { deleteProduct } from "../controller/team.controller.js";
+import { createTeam, getTeams } from "../controller/team.controller.js";
+import { updateTeam } from "../controller/team.controller.js";
+import { deleteTeam } from "../controller/team.controller.js";
 
 const router = express.Router();
 
-router.get("/", getProducts);
-router.post("/", createProduct);
-router.put("/:id", updateProduct);
-router.delete("/:id", deleteProduct);
+router.get("/", getTeams);
+router.post("/", createTeam);
+router.put("/:id", updateTeam);
+router.delete("/:id", deleteTeam);
 
 export default router;

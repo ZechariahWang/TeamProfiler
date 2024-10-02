@@ -2,17 +2,17 @@ import React from 'react';
 import { Box, Button, SimpleGrid, Container, Heading, Input, useColorModeValue, useToast, VStack, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useProductStore } from "../Profiler/team";
-import ProductCard from "../Components/ProductCard";
+import { useTeamStore } from "../Profiler/team";
+import TeamCard from "../Components/TeamCard";
 
 const HomePage = () => {
 
-  const { fetchProducts, products } = useProductStore();
+  const { fetchTeams, Teams } = useTeamStore();
 
   useEffect(() => {
-		fetchProducts();
-	}, [fetchProducts]);
-	console.log("products", products);
+		fetchTeams();
+	}, [fetchTeams]);
+	console.log("Teams", Teams);
 
   return (
     <Container maxW='container.x1' py={12}>
@@ -36,12 +36,12 @@ const HomePage = () => {
 					spacing={10}
 					w={"full"}
 				>
-					{products.map((product) => (
-						<ProductCard key={product._id} product={product} />
+					{Teams.map((Team) => (
+						<TeamCard key={Team._id} Team={Team} />
 					))}
 				</SimpleGrid>
 
-				{products.length === 0 && (
+				{Teams.length === 0 && (
 					<Text fontSize='xl' textAlign={"center"} fontWeight='bold' color='gray.500'>
 						No teams currently under profile{" "}
 						<Link to={"/create"}>

@@ -1,18 +1,18 @@
 import React from 'react'
 import { Box, Button, Container, Heading, Input, useColorModeValue, useToast, VStack } from "@chakra-ui/react";
 import { useState } from "react";
-import { useProductStore } from '../Profiler/team';
+import { useTeamStore } from '../Profiler/team';
 
 const CreatePage = () => {
-  const [newProduct, setNewProduct] = useState({
+  const [newTeam, setNewTeam] = useState({
     name: "",
 	});
 
-  const { createProduct } = useProductStore();
+  const { createTeam } = useTeamStore();
   const toast = useToast();
 
-	const handleAddProduct = async () => {
-		const { success, message } = await createProduct(newProduct);
+	const handleAddTeam = async () => {
+		const { success, message } = await createTeam(newTeam);
 		if (!success) {
 			toast({
 				title: "Error",
@@ -28,7 +28,7 @@ const CreatePage = () => {
 				isClosable: true,
 			});
 		}
-		setNewProduct({ name: ""});
+		setNewTeam({ name: ""});
 	};
 
   return <Container maxW={"container.sm"} alignContent={"center"} justifyContent={"center"} py={12}>
@@ -56,27 +56,11 @@ const CreatePage = () => {
             <Input
 							placeholder='Team Name'
 							name='name'
-							value={newProduct.name}
-							onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
+							value={newTeam.name}
+							onChange={(e) => setNewTeam({ ...newTeam, name: e.target.value })}
 							fontWeight={"light"}
 						/>
-						{/* <Input
-							placeholder='Price'
-							name='price'
-							type='number'
-							value={newProduct.price}
-							onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
-							fontWeight={"light"}
-						/>
-						<Input
-							placeholder='Image URL'
-							name='image'
-							value={newProduct.image}
-							onChange={(e) => setNewProduct({ ...newProduct, image: e.target.value })}
-							fontWeight={"light"}
-						/> */}
-
-            <Button colorScheme='blue' onClick={handleAddProduct} w='full' fontWeight={"light"}>
+            <Button colorScheme='blue' onClick={handleAddTeam} w='full' fontWeight={"light"}>
 				Add Team
 			</Button>
         </VStack>
