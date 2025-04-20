@@ -1,3 +1,5 @@
 # TeamProfiler
 
-Made using React, Express, Node.js, and MongoDB. This is a remake of an old project where I used Flask and SQL Alchemy for storing user data. Project used internally within the 2023-2024 Mecha Mayhem website.
+210Z Eclipse Robotics Team Tracker for competitions.
+
+Utilizes React.js, Express.js, Node.js, MongoDB, Tailwind
