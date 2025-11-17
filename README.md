@@ -1,5 +1,5 @@
 # TeamProfiler
 
-210Z Eclipse Robotics Team Tracker for competitions.
+Internal robotics team tracker for competitions. Created by Zechariah Wang for 210Z Eclipse.
 
-Utilizes React.js, Express.js, Node.js, MongoDB
+Tech stack: React.js, Express.js, Node.js, MongoDB
